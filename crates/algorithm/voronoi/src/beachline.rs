@@ -202,7 +202,7 @@ impl<T: B> BeachLine<T> {
     }
 
     pub fn find_arc(&self, event: &Site<T>) -> SQKey {
-        self.print_debug();
+        //self.print_debug();
         let mut curr = self.head.unwrap();
 
         loop {
