@@ -1,0 +1,87 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/algorithm/brute-force",
+    "crates/algorithm/sweep",
+    "crates/algorithm/sweep-fast",
+    "crates/algorithm/sweep-utils",
+    "crates/algorithm/sweep-with-lines", "crates/algorithm/voronoi",
+    "crates/common",
+    "crates/plane-sweep",
+    "crates/ui/app",
+    "crates/ui/controller",
+    "crates/ui/intersection_table",
+    "crates/ui/segment_plotter",
+    "crates/ui/segment_table",
+    "crates/ui/third_party_licenses",
+    "crates/ui/tracing-gui",
+        "crates/ui/site_table",
+    "crates/workspace-hack",
+]
+exclude = ["benchmark", "fuzzer"]
+
+[workspace.package]
+version = "1.1.0"
+authors = ["Florian Ströbl <249492309+florian-stroebl@users.noreply.github.com>"]
+edition = "2024"
+homepage = "https://florian-stroebl.github.io/plane-sweep/"
+publish = false
+repository = "https://github.com/florian-stroebl/plane-sweep"
+description = "Implementation and Visualization of Plane Sweep"
+license = "Apache-2.0 OR MIT"
+rust-version = "1.88.0"
+
+[workspace.lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(kani)'] }
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+
+[workspace.metadata.typos]
+default.extend-words.egui = "egui"
+default.extend-words.flate2 = "flate2"
+default.extend-words.typ = "typ"
+files.extend-exclude = [
+    "dist/*",
+    "crates/third_party_licenses/src/third_party_licences_generated.md",
+]
+
+[workspace.metadata.cargo-shear]
+ignored = ["workspace-hack"]
+
+[profile.dev]
+#debug = 0
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.ci]
+inherits = "dev"
+debug = 0
+opt-level = 0
+overflow-checks = true
+debug-assertions = true
+
+[profile.ci.package."*"]
+debug = 0
+opt-level = 0
+overflow-checks = true
+debug-assertions = true
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+opt-level = 's'
+
+[profile.release-native-split]
+inherits = "release"
+opt-level = 3
+debug = "full"
+
+[profile.release-native]
+inherits = "release"
+opt-level = 3
+debug = "full"
+
+
