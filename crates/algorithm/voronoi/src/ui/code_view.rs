@@ -53,7 +53,7 @@ impl<'a, T: B> MyWidget<CodeViewState<'a, T>> for CodeView {
                 .underline(),
             );
         } else {
-            ui.label(RichText::new("Get the next event.").heading().underline());
+            ui.label(RichText::new("Get the next event."));
         }
 
         ui.separator();
@@ -71,7 +71,7 @@ impl<'a, T: B> MyWidget<CodeViewState<'a, T>> for CodeView {
                     .underline(),
             );
         } else {
-            ui.label(RichText::new("Find arc to insert.").heading().underline());
+            ui.label(RichText::new("Find arc to insert."));
         }
 
         if let StepType::DeleteVertexEvent(key) = s.typ {
@@ -87,20 +87,15 @@ impl<'a, T: B> MyWidget<CodeViewState<'a, T>> for CodeView {
                 ui.label(
                     RichText::new(
                         "Remove event associated with the arc. No event associated.".to_string(),
-                    )
-                    .heading()
-                    .underline(),
+                    ),
                 );
             }
         } else {
             ui.label(
-                RichText::new("Remove event associated with the arc.")
-                    .heading()
-                    .underline(),
+                RichText::new("Remove event associated with the arc."),
             );
         }
 
-        ui.separator();
         let text = "Insert new Arc.";
         if s.typ.is_replacing() {
             ui.label(RichText::new(text).heading().underline());
@@ -200,9 +195,7 @@ impl<'a, T: B> MyWidget<CodeViewState<'a, T>> for CodeView {
             }
         } else {
             ui.label(
-                RichText::new("Remove possible circle event involving the arc.")
-                    .heading()
-                    .underline(),
+                RichText::new("Remove possible circle event involving the arc."),
             );
         }
 
@@ -214,9 +207,7 @@ impl<'a, T: B> MyWidget<CodeViewState<'a, T>> for CodeView {
             );
         } else {
             ui.label(
-                RichText::new("Add Vertex to the DCEL.")
-                    .heading()
-                    .underline(),
+                RichText::new("Add Vertex to the DCEL."),
             );
         }
 
